@@ -9,10 +9,10 @@ script:
     - docker run -e CI=true juanmartdelb/react-test npm test  #tiene que terminar, status 0 todo bien, sino todo mal
 
 after_success:
-    - docker build -t juanmartdelb/multi-client Dockerfile ./client
-    - docker build -t juanmartdelb/multi-nginx Dockerfile ./nginx
-    - docker build -t juanmartdelb/multi-server Dockerfile ./server
-    - docker build -t juanmartdelb/multi-worker Dockerfile ./worker
+    - docker build -t juanmartdelb/multi-client -f Dockerfile ./client
+    - docker build -t juanmartdelb/multi-nginx -f Dockerfile ./nginx
+    - docker build -t juanmartdelb/multi-server -f Dockerfile ./server
+    - docker build -t juanmartdelb/multi-worker -f Dockerfile ./worker
     # loguearse a docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # pushearlas a docker hub
