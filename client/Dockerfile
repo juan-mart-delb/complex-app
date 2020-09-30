@@ -10,4 +10,4 @@ FROM nginx
 EXPOSE 3000
 #  no hace nada en verdad, solo en AWS
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-copy --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
